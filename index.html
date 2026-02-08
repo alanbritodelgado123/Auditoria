@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía - Auditoría de Sistemas Computarizados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1976D2;
+            --primary-dark: #0D47A1;
+            --primary-light: #BBDEFB;
+            --accent: #FF5722;
+            --accent-light: #FFCCBC;
+            --success: #4CAF50;
+            --success-light: #C8E6C9;
+            --warning: #FFC107;
+            --warning-light: #FFF8E1;
+            --error: #F44336;
+            --purple: #7B1FA2;
+            --purple-light: #E1BEE7;
+            --teal: #00897B;
+            --teal-light: #B2DFDB;
+            --surface: #FFFFFF;
+            --background: #FAFAFA;
+            --on-surface: #212121;
+            --on-surface-medium: #666666;
+            --on-surface-light: #9E9E9E;
+            --elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --elevation-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            --elevation-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            --elevation-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .infografia-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--background);
+            border-radius: 16px;
+            box-shadow: var(--elevation-4);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .header .institution {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 30px;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--on-surface);
+            font-weight: 700;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .section-title .material-icons {
+            font-size: 32px;
+            color: var(--primary);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--elevation-2);
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            box-shadow: var(--elevation-3);
+            transform: translateY(-4px);
+        }
+
+        .card-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--on-surface);
+        }
+
+        .card-body {
+            padding: 0 20px 20px;
+        }
+
+        /* Card con imagen */
+        .card-with-image {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card-with-image.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .card-image-container {
+            flex: 0 0 220px;
+            min-height: 200px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card-image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-image-placeholder {
+            color: #9e9e9e;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image-placeholder .material-icons {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .card-content-wrapper {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Grid Layout */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        /* List Items */
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 20px;
+        }
+
+        .list-item-content h4 {
+            font-weight: 600;
+            color: var(--on-surface);
+            margin-bottom: 4px;
+        }
+
+        .list-item-content p {
+            color: var(--on-surface-medium);
+            font-size: 0.9rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: var(--elevation-1);
+        }
+
+        .timeline-item:nth-child(even)::before {
+            background: var(--accent);
+        }
+
+        .timeline-item h4 {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .timeline-item p {
+            color: var(--on-surface-medium);
+            font-size: 0.9rem;
+        }
+
+        /* Comparison Cards */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .comparison-card {
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--elevation-2);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--elevation-3);
+        }
+
+        .comparison-header {
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .comparison-header.internal {
+            background: linear-gradient(135deg, #43A047 0%, #2E7D32 100%);
+        }
+
+        .comparison-header.external {
+            background: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
+        }
+
+        .comparison-header.detective {
+            background: linear-gradient(135deg, #FB8C00 0%, #EF6C00 100%);
+        }
+
+        .comparison-header.corrective {
+            background: linear-gradient(135deg, #8E24AA 0%, #6A1B9A 100%);
+        }
+
+        .comparison-header h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .comparison-header .material-icons {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .comparison-image {
+            height: 120px;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .comparison-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comparison-body {
+            padding: 20px;
+        }
+
+        .comparison-body ul {
+            list-style: none;
+        }
+
+        .comparison-body li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .comparison-body li:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-body li .material-icons {
+            color: var(--success);
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Example Box */
+        .example-box {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+            border-left: 4px solid var(--warning);
+            border-radius: 0 8px 8px 0;
+            padding: 15px 20px;
+            margin-top: 15px;
+        }
+
+        .example-box-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #F57F17;
+        }
+
+        .example-box p {
+            color: #5D4037;
+            font-size: 0.9rem;
+        }
+
+        /* Analogy Box */
+        .analogy-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-left: 4px solid var(--success);
+            border-radius: 0 8px 8px 0;
+            padding: 15px 20px;
+            margin-top: 15px;
+        }
+
+        .analogy-box-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #2E7D32;
+        }
+
+        .analogy-box p {
+            color: #1B5E20;
+            font-size: 0.9rem;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            background: linear-gradient(135deg, #1A237E 0%, #283593 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .profile-header-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.3);
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .profile-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-header-image .card-image-placeholder {
+            color: #9e9e9e;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .profile-header-image .card-image-placeholder .material-icons {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .profile-header-image .card-image-placeholder p {
+            font-size: 0.7rem;
+        }
+
+        .profile-header-text h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .profile-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-card h4 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .profile-card ul {
+            list-style: none;
+        }
+
+        .profile-card li {
+            padding: 6px 0;
+            opacity: 0.9;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .profile-card li::before {
+            content: '▸';
+            color: #64B5F6;
+            flex-shrink: 0;
+        }
+
+        /* Approaches Section */
+        .approaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .approach-card {
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--elevation-1);
+            transition: all 0.3s ease;
+            border-top: 4px solid;
+        }
+
+        .approach-card:nth-child(1) { border-top-color: #E91E63; }
+        .approach-card:nth-child(2) { border-top-color: #9C27B0; }
+        .approach-card:nth-child(3) { border-top-color: #3F51B5; }
+        .approach-card:nth-child(4) { border-top-color: #00BCD4; }
+
+        .approach-card:hover {
+            transform: scale(1.03);
+            box-shadow: var(--elevation-3);
+        }
+
+        .approach-card .material-icons {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .approach-card:nth-child(1) .material-icons { color: #E91E63; }
+        .approach-card:nth-child(2) .material-icons { color: #9C27B0; }
+        .approach-card:nth-child(3) .material-icons { color: #3F51B5; }
+        .approach-card:nth-child(4) .material-icons { color: #00BCD4; }
+
+        .approach-card h4 {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--on-surface);
+            font-size: 0.95rem;
+        }
+
+        .approach-card p {
+            font-size: 0.85rem;
+            color: var(--on-surface-medium);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            margin: 35px 0;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+        }
+
+        .section-divider .material-icons {
+            margin: 0 15px;
+            color: var(--primary);
+            font-size: 28px;
+        }
+
+        /* Highlight Text */
+        .highlight {
+            background: linear-gradient(120deg, var(--primary-light) 0%, var(--primary-light) 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 90%;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-point {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 3px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #263238;
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .student-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .student-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .student-info-item .material-icons {
+            color: #64B5F6;
+        }
+
+        /* References Section */
+        .references-section {
+            background: #ECEFF1;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .references-section h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--on-surface);
+            font-size: 1.1rem;
+        }
+
+        .references-section ul {
+            list-style: none;
+        }
+
+        .references-section li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #CFD8DC;
+            font-size: 0.9rem;
+            color: var(--on-surface-medium);
+        }
+
+        .references-section li:last-child {
+            border-bottom: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.1rem;
+            }
+
+            .card-with-image {
+                flex-direction: column;
+            }
+
+            .card-with-image.reverse {
+                flex-direction: column;
+            }
+
+            .card-image-container {
+                flex: none;
+                width: 100%;
+                height: 180px;
+            }
+
+            .card-content-wrapper {
+                min-width: auto;
+            }
+
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .comparison-card, .profile-section {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="infografia-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Auditoría de Sistemas Computarizados</h1>
+                <p class="subtitle">Introducción, Conceptos y Fundamentos</p>
+                <div class="institution">
+                    <strong>República Bolivariana de Venezuela</strong><br>
+                    Ministerio del Poder Popular para la Educación<br>
+                    Instituto Universitario de Tecnología Elías Calixto Pompa<br>
+                    El Tigre, Estado Anzoátegui
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- 1. ORÍGENES -->
+            <div class="card card-with-image">
+                <div class="card-image-container">
+                    <img src="1.png" alt="Orígenes de la Auditoría" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="card-image-placeholder" style="display: none;">
+                        <span class="material-icons">history</span>
+                        <p>1.png</p>
+                    </div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #FF6F00, #FF8F00);">
+                            <span class="material-icons">history_edu</span>
+                        </div>
+                        <h2 class="card-title">1. Orígenes de la Auditoría de Sistemas</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>📅 Década de 1960</h4>
+                                <p>Nace con los primeros mainframes. Las empresas comienzan a depender de computadoras para procesar información financiera.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>📅 Década de 1970</h4>
+                                <p>Se formaliza como disciplina. Surgen los primeros fraudes informáticos y errores de procesamiento, haciendo evidente la necesidad de controles.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>📅 Década de 1980-1990</h4>
+                                <p>Expansión de PCs y redes. Se crean organizaciones como <strong>ISACA</strong> y estándares como <strong>COBIT</strong>.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>📅 Siglo XXI</h4>
+                                <p>Era de ciberseguridad, cloud computing, big data e inteligencia artificial. La auditoría se vuelve crítica para la supervivencia empresarial.</p>
+                            </div>
+                        </div>
+                        <div class="analogy-box">
+                            <div class="analogy-box-header">
+                                <span class="material-icons">lightbulb</span>
+                                Analogía
+                            </div>
+                            <p>Así como un médico revisa la salud del cuerpo humano, el auditor de sistemas examina la "salud" tecnológica de una organización.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <span class="material-icons">menu_book</span>
+            </div>
+
+            <!-- 2. DEFINICIÓN -->
+            <div class="card card-with-image reverse">
+                <div class="card-image-container">
+                    <img src="2.png" alt="Definición de Auditoría" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="card-image-placeholder" style="display: none;">
+                        <span class="material-icons">description</span>
+                        <p>2.png</p>
+                    </div>
+                </div>
+                <div class="card-content-wrapper">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #1976D2, #1565C0);">
+                            <span class="material-icons">description</span>
+                        </div>
+                        <h2 class="card-title">2. Definición</h2>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 1.1rem; color: var(--on-surface); margin-bottom: 20px; line-height: 1.8; text-align: justify;">
+                            La <span class="highlight">Auditoría de Sistemas Computarizados</span> es el proceso sistemático, independiente y documentado para obtener evidencias y evaluarlas objetivamente, con el fin de determinar si los sistemas de información de una organización:
+                        </p>
+                        <div class="grid-3" style="margin-top: 15px;">
+                            <div style="text-align: center; padding: 15px; background: #E3F2FD; border-radius: 8px;">
+                                <span class="material-icons" style="font-size: 32px; color: #1565C0;">security</span>
+                                <p style="margin-top: 8px; font-weight: 500; color: #1565C0;">Protegen los activos</p>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: #E8F5E9; border-radius: 8px;">
+                                <span class="material-icons" style="font-size: 32px; color: #2E7D32;">verified</span>
+                                <p style="margin-top: 8px; font-weight: 500; color: #2E7D32;">Mantienen la integridad</p>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: #FFF3E0; border-radius: 8px;">
+                                <span class="material-icons" style="font-size: 32px; color: #E65100;">speed</span>
+                                <p style="margin-top: 8px; font-weight: 500; color: #E65100;">Operan eficientemente</p>
+                            </div>
+                        </div>
+                        <div class="example-box">
+                            <div class="example-box-header">
+                                <span class="material-icons">business_center</span>
+                                Ejemplo Práctico
+                            </div>
+                            <p>Una empresa bancaria contrata auditores para verificar que su sistema de transferencias electrónicas cumpla con las normativas de seguridad PCI-DSS y proteja los datos de sus clientes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <span class="material-icons">auto_awesome</span>
+            </div>
+
+            <!-- 3. CONCEPTOS BÁSICOS -->
+            <h2 class="section-title">
+                <span class="material-icons">lightbulb</span>
+                3. Conceptos Básicos
+            </h2>
+
+            <div class="card">
+                <div class="card-body" style="padding-top: 20px;">
+                    <div class="grid-2">
+                        <div>
+                            <div class="list-item">
+                                <div class="list-item-icon" style="background: #E3F2FD; color: #1976D2;">
+                                    <span class="material-icons">security</span>
+                                </div>
+                                <div class="list-item-content">
+                                    <h4>Control Interno</h4>
+                                    <p>Políticas y procedimientos para salvaguardar activos, garantizar precisión de datos y promover eficiencia operativa.</p>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <div class="list-item-icon" style="background: #FFF3E0; color: #E65100;">
+                                    <span class="material-icons">warning</span>
+                                </div>
+                                <div class="list-item-content">
+                                    <h4>Riesgo Informático</h4>
+                                    <p>Probabilidad de que una amenaza explote una vulnerabilidad causando daño a los sistemas o información.</p>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <div class="list-item-icon" style="background: #E8F5E9; color: #2E7D32;">
+                                    <span class="material-icons">fact_check</span>
+                                </div>
+                                <div class="list-item-content">
+                                    <h4>Evidencia de Auditoría</h4>
+                                    <p>Información verificable que sustenta los hallazgos: logs, reportes, entrevistas, pruebas técnicas.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="list-item">
+                                <div class="list-item-icon" style="background: #FCE4EC; color: #C2185B;">
+                                    <span class="material-icons">find_in_page</span>
+                                </div>
+                                <div class="list-item-content">
+                                    <h4>Hallazgo</h4>
+                                    <p>Diferencia entre la situación actual y el criterio o estándar establecido. Puede ser positivo o negativo.</p>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <div class="list-item-icon" style="background: #E8EAF6; color: #3F51B5;">
+                                    <span class="material-icons">tips_and_updates</span>
+                                </div>
+                                <div class="list-item-content">
+                                    <h4>Recomendación</h4>
+                                    <p>Propuesta de acción correctiva o preventiva basada en los hallazgos identificados.</p>
+                                </div>
+                            </div>
+                            <div class="list-item">
+                                <div class="list-item-icon" style="background: #F3E5F5; color: #7B1FA2;">
+                                    <span class="material-icons">gavel</span>
+                                </div>
+                                <div class="list-item-content">
+                                    <h4>Cumplimiento (Compliance)</h4>
+                                    <p>Adherencia a leyes, regulaciones, políticas internas y estándares de la industria (ISO, COBIT, etc.).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="analogy-box">
+                        <div class="analogy-box-header">
+                            <span class="material-icons">lightbulb</span>
+                            Analogía
+                        </div>
+                        <p>Los conceptos de auditoría son como las herramientas de un detective: la evidencia son las pistas, el hallazgo es descubrir algo fuera de lugar, y la recomendación es el plan para resolver el caso.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <span class="material-icons">account_tree</span>
+            </div>
+
+            <!-- 4. CLASIFICACIÓN -->
+            <h2 class="section-title">
+                <span class="material-icons">account_tree</span>
+                4. Clasificación de la Auditoría
+            </h2>
+
+            <div class="comparison-container">
+                <!-- Auditoría Interna -->
+                <div class="comparison-card">
+                    <div class="comparison-header internal">
+                        <span class="material-icons">home_work</span>
+                        <h3>Auditoría Interna</h3>
+                    </div>
+                    <div class="comparison-image">
+                        <img src="3.png" alt="Auditoría Interna" onerror="this.parentElement.innerHTML='<div class=\'card-image-placeholder\'><span class=\'material-icons\'>apartment</span><p>3.png</p></div>';">
+                    </div>
+                    <div class="comparison-body">
+                        <ul>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Realizada por <strong>personal propio</strong> de la organización</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Evaluación <strong>continua y permanente</strong> de controles</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span><strong>Mayor conocimiento</strong> del negocio y sus procesos</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Enfoque <strong>preventivo</strong> y de mejora continua</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Reporta directamente a <strong>alta dirección</strong></span>
+                            </li>
+                        </ul>
+                        <div class="example-box">
+                            <div class="example-box-header">
+                                <span class="material-icons">business_center</span>
+                                Ejemplo
+                            </div>
+                            <p>El departamento de auditoría interna de un banco revisa mensualmente los accesos al sistema core bancario.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auditoría Externa -->
+                <div class="comparison-card">
+                    <div class="comparison-header external">
+                        <span class="material-icons">business</span>
+                        <h3>Auditoría Externa</h3>
+                    </div>
+                    <div class="comparison-image">
+                        <img src="4.png" alt="Auditoría Externa" onerror="this.parentElement.innerHTML='<div class=\'card-image-placeholder\'><span class=\'material-icons\'>domain</span><p>4.png</p></div>';">
+                    </div>
+                    <div class="comparison-body">
+                        <ul>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Realizada por <strong>profesionales independientes</strong></span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span><strong>Mayor objetividad</strong> e imparcialidad en evaluación</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Aporta <strong>visión externa</strong> y mejores prácticas</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Requerida para <strong>cumplimiento regulatorio</strong></span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Genera <strong>credibilidad</strong> ante terceros</span>
+                            </li>
+                        </ul>
+                        <div class="example-box">
+                            <div class="example-box-header">
+                                <span class="material-icons">business_center</span>
+                                Ejemplo
+                            </div>
+                            <p>Una firma de auditoría certifica que una empresa cumple con ISO 27001 para seguridad de la información.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla comparativa -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #607D8B, #455A64);">
+                        <span class="material-icons">compare_arrows</span>
+                    </div>
+                    <h2 class="card-title">Comparación: Interna vs Externa</h2>
+                </div>
+                <div class="card-body">
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: #ECEFF1;">
+                                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #CFD8DC;">Aspecto</th>
+                                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #CFD8DC; color: #2E7D32;">🏠 Interna</th>
+                                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #CFD8DC; color: #1565C0;">🏢 Externa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ECEFF1;"><strong>Ejecutor</strong></td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ECEFF1;">Empleados de la empresa</td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ECEFF1;">Firma o consultor externo</td>
+                                </tr>
+                                <tr style="background: #FAFAFA;">
+                                    <td style="padding: 10px; border-bottom: 1px solid #ECEFF1;"><strong>Independencia</strong></td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ECEFF1;">Limitada</td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ECEFF1;">Total</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #ECEFF1;"><strong>Frecuencia</strong></td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ECEFF1;">Continua</td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ECEFF1;">Periódica (anual/semestral)</td>
+                                </tr>
+                                <tr style="background: #FAFAFA;">
+                                    <td style="padding: 10px; border-bottom: 1px solid #ECEFF1;"><strong>Costo</strong></td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ECEFF1;">Incluido en nómina</td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #ECEFF1;">Honorarios profesionales</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px;"><strong>Enfoque</strong></td>
+                                    <td style="padding: 10px; text-align: center;">Preventivo y operativo</td>
+                                    <td style="padding: 10px; text-align: center;">Cumplimiento y certificación</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <span class="material-icons">layers</span>
+            </div>
+
+            <!-- 5. TIPOS DE AUDITORÍA -->
+            <h2 class="section-title">
+                <span class="material-icons">layers</span>
+                5. Tipos de Auditoría
+            </h2>
+
+            <div class="comparison-container">
+                <!-- Auditoría Detectiva -->
+                <div class="comparison-card">
+                    <div class="comparison-header detective">
+                        <span class="material-icons">search</span>
+                        <h3>Auditoría Detectiva</h3>
+                    </div>
+                    <div class="comparison-image">
+                        <img src="5.png" alt="Auditoría Detectiva" onerror="this.parentElement.innerHTML='<div class=\'card-image-placeholder\'><span class=\'material-icons\'>find_in_page</span><p>5.png</p></div>';">
+                    </div>
+                    <div class="comparison-body">
+                        <ul>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span><strong>Identifica</strong> errores, fraudes o irregularidades ya ocurridas</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Analiza <strong>transacciones pasadas</strong> y registros históricos</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Utiliza técnicas de <strong>análisis forense</strong> digital</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Revisa <strong>logs, bitácoras</strong> y rastros de auditoría</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Busca <strong>patrones anómalos</strong> en los datos</span>
+                            </li>
+                        </ul>
+                        <div class="example-box">
+                            <div class="example-box-header">
+                                <span class="material-icons">business_center</span>
+                                Ejemplo
+                            </div>
+                            <p>Detectar que un empleado accedió 50 veces fuera de horario laboral a la base de datos de clientes en el último mes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auditoría Correctiva -->
+                <div class="comparison-card">
+                    <div class="comparison-header corrective">
+                        <span class="material-icons">build_circle</span>
+                        <h3>Auditoría Correctiva</h3>
+                    </div>
+                    <div class="comparison-image">
+                        <img src="6.png" alt="Auditoría Correctiva" onerror="this.parentElement.innerHTML='<div class=\'card-image-placeholder\'><span class=\'material-icons\'>engineering</span><p>6.png</p></div>';">
+                    </div>
+                    <div class="comparison-body">
+                        <ul>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span><strong>Propone soluciones</strong> a los problemas encontrados</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Define <strong>planes de acción</strong> con responsables y fechas</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span><strong>Fortalece controles</strong> débiles o inexistentes</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Realiza <strong>seguimiento</strong> a la implementación</span>
+                            </li>
+                            <li>
+                                <span class="material-icons">check_circle</span>
+                                <span>Busca <strong>prevenir recurrencias</strong> futuras</span>
+                            </li>
+                        </ul>
+                        <div class="example-box">
+                            <div class="example-box-header">
+                                <span class="material-icons">business_center</span>
+                                Ejemplo
+                            </div>
+                            <p>Implementar autenticación de dos factores y restricción de horarios después de detectar accesos no autorizados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla comparativa Tipos -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #FF7043, #F4511E);">
+                        <span class="material-icons">compare_arrows</span>
+                    </div>
+                    <h2 class="card-title">Comparación: Detectiva vs Correctiva</h2>
+                </div>
+                <div class="card-body">
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                            <thead>
+                                <tr style="background: #FFF3E0;">
+                                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #FFCC80;">Aspecto</th>
+                                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #FFCC80; color: #E65100;">🔍 Detectiva</th>
+                                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #FFCC80; color: #7B1FA2;">🔧 Correctiva</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #FFECB3;"><strong>Objetivo</strong></td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #FFECB3;">Encontrar problemas</td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #FFECB3;">Solucionar problemas</td>
+                                </tr>
+                                <tr style="background: #FFFDE7;">
+                                    <td style="padding: 10px; border-bottom: 1px solid #FFECB3;"><strong>Momento</strong></td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #FFECB3;">Durante/después del evento</td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #FFECB3;">Después del hallazgo</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border-bottom: 1px solid #FFECB3;"><strong>Pregunta clave</strong></td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #FFECB3;">¿Qué pasó?</td>
+                                    <td style="padding: 10px; text-align: center; border-bottom: 1px solid #FFECB3;">¿Cómo lo solucionamos?</td>
+                                </tr>
+                                <tr style="background: #FFFDE7;">
+                                    <td style="padding: 10px;"><strong>Resultado</strong></td>
+                                    <td style="padding: 10px; text-align: center;">Informe de hallazgos</td>
+                                    <td style="padding: 10px; text-align: center;">Plan de acción implementado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="analogy-box" style="margin-top: 20px;">
+                        <div class="analogy-box-header">
+                            <span class="material-icons">lightbulb</span>
+                            Analogía
+                        </div>
+                        <p><strong>Detectiva:</strong> Es como el detective que investiga un crimen ya cometido. <strong>Correctiva:</strong> Es como el médico que, después del diagnóstico, prescribe el tratamiento para curar la enfermedad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <span class="material-icons">visibility</span>
+            </div>
+
+            <!-- 6. ENFOQUES -->
+            <h2 class="section-title">
+                <span class="material-icons">visibility</span>
+                6. Enfoques de la Auditoría de Sistemas
+            </h2>
+
+            <div class="card">
+                <div class="card-body" style="padding-top: 20px;">
+                    <div class="approaches-grid">
+                        <div class="approach-card">
+                            <span class="material-icons">computer</span>
+                            <h4>Alrededor del Computador</h4>
+                            <p>Evalúa entradas y salidas sin examinar el procesamiento interno. Verifica que los resultados sean correctos.</p>
+                        </div>
+                        <div class="approach-card">
+                            <span class="material-icons">memory</span>
+                            <h4>A Través del Computador</h4>
+                            <p>Examina la lógica de programas, algoritmos y controles automatizados dentro del sistema.</p>
+                        </div>
+                        <div class="approach-card">
+                            <span class="material-icons">build</span>
+                            <h4>Con el Computador (CAATs)</h4>
+                            <p>Utiliza herramientas automatizadas para análisis de datos, muestreo y pruebas masivas.</p>
+                        </div>
+                        <div class="approach-card">
+                            <span class="material-icons">hub</span>
+                            <h4>Enfoque Integral</h4>
+                            <p>Combina todos los enfoques para una evaluación completa y holística del sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box" style="margin-top: 20px;">
+                        <div class="example-box-header">
+                            <span class="material-icons">business_center</span>
+                            Ejemplo Práctico de CAATs
+                        </div>
+                        <p>Usar software como <strong>ACL Analytics</strong> o <strong>IDEA</strong> para analizar 1 millón de transacciones en minutos, identificando automáticamente duplicados, valores atípicos o transacciones fuera de parámetros.</p>
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 20px; background: #E3F2FD; border-radius: 8px;">
+                        <h4 style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px; color: #1565C0;">
+                            <span class="material-icons">info</span>
+                            ¿Cuándo usar cada enfoque?
+                        </h4>
+                        <div class="grid-2" style="margin-bottom: 0;">
+                            <div>
+                                <p style="font-size: 0.9rem; color: #37474F;"><strong>🔹 Alrededor:</strong> Sistemas simples o cuando no hay acceso al código.</p>
+                                <p style="font-size: 0.9rem; color: #37474F; margin-top: 8px;"><strong>🔹 A través:</strong> Sistemas complejos con procesamiento crítico.</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.9rem; color: #37474F;"><strong>🔹 Con el computador:</strong> Grandes volúmenes de datos.</p>
+                                <p style="font-size: 0.9rem; color: #37474F; margin-top: 8px;"><strong>🔹 Integral:</strong> Auditorías completas de alto riesgo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <span class="material-icons">person</span>
+            </div>
+
+            <!-- 7. PERFIL DEL AUDITOR -->
+            <div class="profile-section">
+                <div class="profile-header">
+                    <div class="profile-header-image">
+                        <img src="7.png" alt="Perfil del Auditor" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="card-image-placeholder" style="display: none;">
+                            <span class="material-icons">account_circle</span>
+                            <p>7.png</p>
+                        </div>
+                    </div>
+                    <div class="profile-header-text">
+                        <h2>7. Perfil del Auditor de Sistemas</h2>
+                    </div>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <h4><span class="material-icons">school</span> Conocimientos Técnicos</h4>
+                        <ul>
+                            <li>Sistemas operativos (Windows, Linux)</li>
+                            <li>Redes y protocolos de comunicación</li>
+                            <li>Bases de datos (SQL, NoSQL)</li>
+                            <li>Seguridad informática y ciberseguridad</li>
+                            <li>Programación y scripting básico</li>
+                        </ul>
+                    </div>
+                    <div class="profile-card">
+                        <h4><span class="material-icons">menu_book</span> Marcos y Estándares</h4>
+                        <ul>
+                            <li>COBIT (Governance de TI)</li>
+                            <li>ISO 27001 (Seguridad de Información)</li>
+                            <li>ITIL (Gestión de Servicios)</li>
+                            <li>NIST (Ciberseguridad)</li>
+                            <li>Regulaciones locales (LOPD, etc.)</li>
+                        </ul>
+                    </div>
+                    <div class="profile-card">
+                        <h4><span class="material-icons">psychology</span> Habilidades Blandas</h4>
+                        <ul>
+                            <li>Pensamiento analítico y crítico</li>
+                            <li>Comunicación oral y escrita</li>
+                            <li>Ética e integridad profesional</li>
+                            <li>Trabajo en equipo</li>
+                            <li>Capacidad de síntesis</li>
+                        </ul>
+                    </div>
+                    <div class="profile-card">
+                        <h4><span class="material-icons">workspace_premium</span> Certificaciones</h4>
+                        <ul>
+                            <li><strong>CISA</strong> - Certified Information Systems Auditor</li>
+                            <li><strong>CISM</strong> - Certified Information Security Manager</li>
+                            <li><strong>CIA</strong> - Certified Internal Auditor</li>
+                            <li><strong>CISSP</strong> - Certified Information Systems Security Professional</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                    <h4 style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                        <span class="material-icons">star</span>
+                        El Rol del Auditor en la Actualidad
+                    </h4>
+                    <p style="font-size: 0.95rem; opacity: 0.9; line-height: 1.7;">
+                        En la era digital, el auditor de sistemas ya no es solo un revisor de controles, sino un <strong>aliado estratégico</strong> de la organización. Debe anticiparse a riesgos emergentes como ataques de ransomware, fuga de datos en la nube, vulnerabilidades en aplicaciones web y cumplimiento de regulaciones de privacidad (GDPR, LOPD). Su rol es clave para la <strong>continuidad del negocio</strong> y la <strong>confianza digital</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- REFERENCIAS -->
+            <div class="references-section">
+                <h4>
+                    <span class="material-icons">menu_book</span>
+                    Referencias Bibliográficas
+                </h4>
+                <ul>
+                    <li>📚 ISACA. (2019). <em>COBIT 2019 Framework: Introduction and Methodology</em>. Information Systems Audit and Control Association.</li>
+                    <li>📚 Piattini, M., & Del Peso, E. (2001). <em>Auditoría Informática: Un enfoque práctico</em>. Editorial RA-MA.</li>
+                    <li>📚 ISO/IEC 27001:2013. <em>Information technology — Security techniques — Information security management systems</em>.</li>
+                    <li>📚 Echenique García, J. A. (2001). <em>Auditoría en Informática</em>. McGraw-Hill Interamericana.</li>
+                    <li>📚 NIST. (2018). <em>Framework for Improving Critical Infrastructure Cybersecurity</em>. National Institute of Standards and Technology.</li>
+                </ul>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="student-info">
+                <div class="student-info-item">
+                    <span class="material-icons">person</span>
+                    <span>Juliano Cardona</span>
+                </div>
+                <div class="student-info-item">
+                    <span class="material-icons">badge</span>
+                    <span>C.I.: 32.281.199</span>
+                </div>
+                <div class="student-info-item">
+                    <span class="material-icons">school</span>
+                    <span>Facilitadora: Ing. Daisy Vargas</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Manejo de imágenes con placeholder
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.card-image-container img, .profile-header-image img, .comparison-image img');
+            
+            images.forEach(function(img) {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const placeholder = this.nextElementSibling;
+                    if (placeholder && placeholder.classList.contains('card-image-placeholder')) {
+                        placeholder.style.display = 'flex';
+                    }
+                });
+
+                if (img.complete && img.naturalHeight === 0) {
+                    img.dispatchEvent(new Event('error'));
+                }
+            });
+
+            // Animación de aparición
+            const cards = document.querySelectorAll('.card, .comparison-card, .profile-section, .references-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
